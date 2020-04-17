@@ -20,6 +20,7 @@
   "homepage": "https://github.com/scr1pti3/vafflehauz#readme",
   "dependencies": {
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
