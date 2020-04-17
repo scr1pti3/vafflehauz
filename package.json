@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "start": "webpack-dev-server --open",
-      "build": "webpack",
-      "watch": "webpack --watch"
+    "start": "webpack-dev-server --open",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
