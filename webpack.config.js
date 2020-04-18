@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const entry = {
@@ -14,6 +15,7 @@ const output = {
 const optimization = {
     moduleIds: 'hashed',
     runtimeChunk: 'single',
+    usedExports: true,
     splitChunks: {
         cacheGroups: {
             vendor: {
@@ -30,6 +32,9 @@ const plugins = [
     new HtmlWebpackPlugin({
         filename: 'index.html',
         template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+        chunkFilename: '[id].[contenthash].css'
     })
 ]
 
@@ -47,7 +52,12 @@ const __module = {
         {
             test: /.css$/,
             use: [
-                'style-loader',
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        esModule: true,
+                    }
+                },
                 'css-loader'
             ]
         },
@@ -64,6 +74,9 @@ const __module = {
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
+    devServer: {
+        contentBase: 'dist'
+    },
     entry,
     output,
     optimization,
