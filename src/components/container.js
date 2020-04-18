@@ -10,7 +10,10 @@ class Container extends React.Component {
 
 	render(){
 		return(
-			<div className="Container"></div>
+			<div className="Container">
+                <Header/>
+                <Footer/>
+            </div>
 		);
 	}
 }
