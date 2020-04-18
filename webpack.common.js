@@ -34,6 +34,7 @@ const plugins = [
         template: './src/index.html'
     }),
     new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
         chunkFilename: '[id].[contenthash].css'
     })
 ]
@@ -72,11 +73,6 @@ const __module = {
 }
 
 module.exports = {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: 'dist'
-    },
     entry,
     output,
     optimization,

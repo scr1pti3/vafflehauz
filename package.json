@@ -5,8 +5,9 @@
   "main": "index.js",
   "sideEffects": false,
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.dev.js",
+    "publish": "webpack --config webpack.prod.js",
     "watch": "webpack --watch"
   },
   "repository": {
