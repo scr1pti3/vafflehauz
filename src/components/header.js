@@ -4,9 +4,7 @@ class Header extends React.Component {
 	render(){
 		return(
 			<div className="Header">
-				<Header>
-					<h1> Vafflehauz </h1>
-				</Header>
+				<span className="text-muted"> This is Header </span>
 			</div>
 		);
 	}
