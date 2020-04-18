@@ -1,13 +1,14 @@
 import React from 'react';
+import './footer.css';
 
 class Footer extends React.Component {
 	render(){
 		return (
 			<div className="Footer"> 
-				<span className="text-muted"> This is Footer </span>
+				<h1> Vafflehauz </h1>
 			</div>
 		);
 	}
 }
 
-export default Footer
+export default Footer;
