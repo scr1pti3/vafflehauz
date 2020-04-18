@@ -1,3 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Header from './components/header.js';
-import './components/style.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+    <Header/>,
+    document.getElementById('root')
+);
