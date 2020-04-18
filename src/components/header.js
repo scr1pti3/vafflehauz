@@ -6,9 +6,10 @@ class Header extends React.Component {
 		return(
 			<div className="Header">
                 <h1> Vafflehauz </h1>
+				<span className="text-muted"> This is Header </span>
 			</div>
 		);
 	}
 }
 
-export default Header
+export default Header;
