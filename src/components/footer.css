@@ -1,11 +1,11 @@
 .Footer {
-	background-color: "#F8F8F8";
-    border-top: "1px solid #E7E7E7";
-    text-align: "center";
-    padding: "20px";
-    position: "fixed";
-    left: "0";
-    bottom: "0";
-    height: "60px";
-    width: "100%";
+	box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    background-color: rgb(192, 45, 26);
+    color: #fff;
+    position: fixed;
+    bottom: 0;
 }

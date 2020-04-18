@@ -10,8 +10,10 @@ class Footer extends React.Component {
 	render(){
 		return (
 			<div className="Footer"> 
-				<h1> Vafflehauz </h1>
-			</div>
+				<div className="row">
+					<h1> Vafflehauz Footer </h1>
+				</div>
+			</div>			
 		);
 	}
 }
