@@ -4,8 +4,7 @@ import './components/header.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/header.js';
-import Footer from './components/footer.js';
+import Container from './components/container.js' 
 
 ReactDOM.render(
     <Container />,
