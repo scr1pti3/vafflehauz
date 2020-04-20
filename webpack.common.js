@@ -19,7 +19,7 @@ const optimization = {
     splitChunks: {
         cacheGroups: {
             vendor: {
-                test: /[\\/]node_modules/,
+                test: /[\\/]node_modules[\\/]/,
                 name: 'vendors',
                 chunks: 'all'
             }
@@ -43,7 +43,7 @@ const __module = {
     rules: [
         {
             test: /.(js|jsx)$/,
-            exclude: /[\\/]node_modules/,
+            exclude: /[\\/](node_modules | test | server)[\\/]/,
             loader: 'babel-loader'
         },
         {
