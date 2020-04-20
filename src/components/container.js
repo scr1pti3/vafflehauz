@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header.js';
 import Footer from './footer.js';
+import Menu from './menu.js';
 
 class Container extends React.Component {
 
@@ -13,6 +14,7 @@ class Container extends React.Component {
 			<div className="Container">
                 <Header/>
                 <Footer/>
+                <Menu/>
             </div>
 		);
 	}
