@@ -1,7 +1,5 @@
 import React from 'react';
-import Header from './header.js';
-import Footer from './footer.js';
-import Menu from './menu.js';
+import Header from './header/header.js';
 
 class Container extends React.Component {
 	constructor(prop){
@@ -10,10 +8,8 @@ class Container extends React.Component {
 
 	render(){
 		return(
-			<div className="Container">
+			<div className="container">
                 <Header/>
-                <Footer/>
-                <Menu/>
             </div>
 		);
 	}

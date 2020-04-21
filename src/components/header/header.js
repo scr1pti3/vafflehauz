@@ -1,19 +1,16 @@
 import React from 'react';
-import "./header.css";
+import NavBar from './navbar.js';
 
 class Header extends React.Component {
-
 	constructor(prop){
 		super(prop);
 	}
 
 	render(){
 		return(
-			<div className="Header">
-				<div className="row">
-                	<h1> Vafflehauz Header </h1>
-                </div>
-			</div>
+            <header className="container mt-3">
+                <NavBar/> 
+            </header>
 		);
 	}
 }
