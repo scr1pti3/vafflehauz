@@ -1,5 +1,11 @@
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { 
+    Navbar, 
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink
+} from 'reactstrap';
 
 const brandStyle = {
     fontSize: "25px",
@@ -8,21 +14,26 @@ const brandStyle = {
 }
 
 function NavBar (props) {
+    const [isActive, setActive] = useState({
+        home: false,
+        gallery: false,
+        about: false
+    });
     return (
-        <Navbar bg="light" expand="lg" className="justify-content-between">
-                <Navbar.Brand href="#home" style={brandStyle}>Vafflehauz</Navbar.Brand>
-                <Nav fill variant="pills">
-                    <Nav.Item>
-                        <Nav.Link href="#home">Home</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link href="#gallery">Gallery</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link href="#about">About</Nav.Link>
-                    </Nav.Item>
+        <Navbar light color="light" expand="lg" className="justify-content-between">
+                <NavbarBrand href="#home" style={brandStyle}>Vafflehauz</NavbarBrand>
+                <Nav pills>
+                    <NavItem>
+                        <NavLink href="#home" active={isActive.home}>Home</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="#gallery" active={isActive.gallery}>Gallery</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="#about" active={isActive.about}>About</NavLink>
+                    </NavItem>
                 </Nav>
         </Navbar>
-    )
+    );
 }
 export default NavBar;
