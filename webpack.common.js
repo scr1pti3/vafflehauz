@@ -34,7 +34,7 @@ const plugins = [
         template: './src/index.html'
     }),
     new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css',
+        filename: 'common.[contenthash].css',
         chunkFilename: '[id].[contenthash].css'
     })
 ]
