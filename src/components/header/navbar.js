@@ -3,44 +3,79 @@ import './navbar.css'
 import { 
     Navbar, 
     NavbarBrand,
+    NavbarToggler,
     Nav,
     NavItem,
-    NavLink
+    NavLink,
+    Button,
+    Collapse,
+    UncontrolledCollapse
 } from 'reactstrap';
 
-const brandStyle = {
-    fontSize: "25px",
-    fontWeight: "600",
-    fontFamily: "Open Sans, Helvetica, Arial, sans-serif",
-}
+
 
 function NavBar (props) {
-    const [isActive, setActive] = useState({Home: true});
+    const [isOpen, setOpen] = useState(false);
 
-    const toggle = e => {
+    //NavLink active state collection
+    const [activeCollection, setActiveCollection] = useState({});
+    //navbar-shrink class state variable
+    const [shrinkClass, setShrinkClass] = useState("");
+
+    const navLinkElementArr = [
+        "services",
+        "portfolio",
+        "about",
+        "team",
+        "contact"
+    ];
+
+    const navLinkStyle = {
+        paddingRight: "0.5rem",
+        paddingLeft: "0.5rem",
+        fontFamily: "Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+        fontSize: "0.95rem",
+        letterSpacing: "0.0625em",
+    }
+
+    //Event onclick; Change active state
+    const toggleNavLink = e => {
         let key = e.target.text;
         let temp = {};
         temp[key] = true;
-        setActive(temp);
+        setActiveCollection(temp);
     }
 
+    //Event onclick; Collapse the navbar
+    const toggleNavbar = () => setOpen(!isOpen);
+
+    //Shrink Navbar on Scroll
+    window.onscroll = () => {
+        let shrinkMin = 200;
+        if(document.body.scrollTop > shrinkMin || document.documentElement.scrollTop > shrinkMin) 
+            setShrinkClass("navbar-shrink");
+        else
+            setShrinkClass("");
+    };
+
     return (
-        <Navbar id="mainNav" expand="lg" className="fixed-top">
+        <Navbar id="mainNav" className={shrinkClass} expand="lg" fixed="top" role="navigation">
             <div className="container">
-                <NavbarBrand href="#home" className="text-light" style={brandStyle}>Vafflehauz</NavbarBrand>
-                <div className="navbar-collapse collapse">
-                    <Nav pills className="ml-auto text-uppercase">
-                        <NavItem>
-                            <NavLink href="#home" className="text-light" active={isActive.Home} onClick={(e) => toggle(e)}>Home</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#gallery" className="text-light" active={isActive.Gallery} onClick={(e) => toggle(e)}>Gallery</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#about" className="text-light" active={isActive.About} onClick={(e) => toggle(e)}>About</NavLink>
-                        </NavItem>
+                <NavbarBrand href="#" className="text-light navbar-brand-style">Vafflehauz</NavbarBrand>
+                <NavbarToggler style={{backgroundColor:"currentcolor"}} onClick={toggleNavbar}/>
+                <Collapse isOpen={isOpen} id="test" navbar>
+                    <Nav navbar className="ml-auto text-uppercase">
+                        {
+                            navLinkElementArr.map(elem => 
+                                <NavItem key={elem}>
+                                    <NavLink href={`#${elem}`} className="text-light nav-link-style" onClick={toggleNavLink}>
+                                        {elem}
+                                    </NavLink>
+                                </NavItem>
+                            )
+                        }
                     </Nav>
-                </div>
+                </Collapse>
             </div>
         </Navbar>
     );
