@@ -1,24 +1,26 @@
 #mainNav {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    border: none;
-    height: 94px;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out, height 0.3s ease-in-out;
-    background-color: transparent;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #0D0D0D;
 }
 
 #mainNav.navbar-shrink {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: #212529;
-    height: 72px;
+    background-color: #0D0D0D;
 }
 
-.navbar-brand-style {
-    font-size: 25px;
+#mainNav .navbar-brand-style {
+    font-size: 30px;
     font-weight: 600;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-family: 'Redressed', cursive, "Open Sans", Helvetica, Arial, sans-serif;
+    transition: font-size 0.3s ease-in-out;
     vertical-align: middle;
+}
+
+#mainNav .navbar-brand-style.navbar-brand-shrink {
+    font-size: 30px;
 }
 
 #mainNav a.nav-link-style {
@@ -29,3 +31,16 @@
     font-size: 0.95rem;
     letter-spacing: 0.0625em;
 }
+
+@media (min-width: 992px) {
+    #mainNav{
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        border: none;
+        background-color: transparent;
+    }
+    #mainNav .navbar-brand-style {
+        font-size: 40px;
+    }
+}
+

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './navbar.css'
 import { 
+    Container,
     Navbar, 
     NavbarBrand,
     NavbarToggler,
@@ -20,7 +21,8 @@ function NavBar (props) {
     //NavLink active state collection
     const [activeCollection, setActiveCollection] = useState({});
     //navbar-shrink class state variable
-    const [shrinkClass, setShrinkClass] = useState("");
+    const [mainNavShrinkClass, setMainNavShrinkClass] = useState("");
+    const [brandShrinkClass, setBrandShrinkClass] = useState("");
 
     const navLinkElementArr = [
         "services",
@@ -30,13 +32,6 @@ function NavBar (props) {
         "contact"
     ];
 
-    const navLinkStyle = {
-        paddingRight: "0.5rem",
-        paddingLeft: "0.5rem",
-        fontFamily: "Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
-        fontSize: "0.95rem",
-        letterSpacing: "0.0625em",
-    }
 
     //Event onclick; Change active state
     const toggleNavLink = e => {
@@ -52,23 +47,27 @@ function NavBar (props) {
     //Shrink Navbar on Scroll
     window.onscroll = () => {
         let shrinkMin = 200;
-        if(document.body.scrollTop > shrinkMin || document.documentElement.scrollTop > shrinkMin) 
-            setShrinkClass("navbar-shrink");
-        else
-            setShrinkClass("");
+        if(document.body.scrollTop > shrinkMin || document.documentElement.scrollTop > shrinkMin) {
+            setMainNavShrinkClass("navbar-shrink");
+            setBrandShrinkClass("navbar-brand-shrink")
+        }
+        else {
+            setMainNavShrinkClass("");
+            setBrandShrinkClass("");
+        }
     };
 
     return (
-        <Navbar id="mainNav" className={shrinkClass} expand="lg" fixed="top" role="navigation">
-            <div className="container">
-                <NavbarBrand href="#" className="text-light navbar-brand-style">Vafflehauz</NavbarBrand>
-                <NavbarToggler style={{backgroundColor:"currentcolor"}} onClick={toggleNavbar}/>
+        <Navbar dark  id="mainNav" className={mainNavShrinkClass} expand="lg" fixed="top" role="navigation">
+            <Container>
+                <NavbarBrand href="#" className={`navbar-brand-style ${brandShrinkClass}`}>Vafflehauz</NavbarBrand>
+                <NavbarToggler style={{backgroundColor:"#261C16"}} onClick={toggleNavbar}/>
                 <Collapse isOpen={isOpen} id="test" navbar>
                     <Nav navbar className="ml-auto text-uppercase">
                         {
                             navLinkElementArr.map(elem => 
                                 <NavItem key={elem}>
-                                    <NavLink href={`#${elem}`} className="text-light nav-link-style" onClick={toggleNavLink}>
+                                    <NavLink href={`#${elem}`} className="nav-link-style" onClick={toggleNavLink}>
                                         {elem}
                                     </NavLink>
                                 </NavItem>
@@ -76,7 +75,7 @@ function NavBar (props) {
                         }
                     </Nav>
                 </Collapse>
-            </div>
+            </Container>
         </Navbar>
     );
 }
