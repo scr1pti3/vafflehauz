@@ -58,16 +58,16 @@ function NavBar (props) {
     };
 
     return (
-        <Navbar dark  id="mainNav" className={mainNavShrinkClass} expand="lg" fixed="top" role="navigation">
+        <Navbar dark id="mainNav" className={mainNavShrinkClass} expand="lg" fixed="top" role="navigation">
             <Container>
                 <NavbarBrand href="#" className={`navbar-brand-style ${brandShrinkClass}`}>Vafflehauz</NavbarBrand>
                 <NavbarToggler style={{backgroundColor:"#261C16"}} onClick={toggleNavbar}/>
-                <Collapse isOpen={isOpen} id="test" navbar>
+                <Collapse isOpen={isOpen} navbar>
                     <Nav navbar className="ml-auto text-uppercase">
                         {
                             navLinkElementArr.map(elem => 
                                 <NavItem key={elem}>
-                                    <NavLink href={`#${elem}`} className="nav-link-style" onClick={toggleNavLink}>
+                                    <NavLink href={`#${elem}`} className="nav-link-style text-light" onClick={toggleNavLink}>
                                         {elem}
                                     </NavLink>
                                 </NavItem>

@@ -1,8 +1,10 @@
 import express from 'express';
 import path from 'path';
 
+import routes from './routes.mjs';
+
+
 const distPath = path.resolve(process.cwd(),'dist');
-console.log(distPath);
 const PORT = process.env.PORT || '3000';
 
 const app = express();
@@ -11,6 +13,9 @@ const app = express();
 app.use(express.json());
 // Form x-www-urlencoded parser
 app.use(express.urlencoded({ extended: false }));
+
+//Routes
+app.use('/api/thumbnail', routes);
 
 app.use(express.static(distPath));
 
