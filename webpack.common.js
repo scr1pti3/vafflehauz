@@ -44,7 +44,7 @@ const __module = {
         {
             test: /.(js|jsx)$/,
             exclude: /[\\/](node_modules | test | server)[\\/]/,
-            loader: 'babel-loader'
+            loader: 'babel-loader?compact=false'
         },
         {
             test: /.html$/,
