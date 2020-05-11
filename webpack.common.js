@@ -43,7 +43,7 @@ const __module = {
     rules: [
         {
             test: /.(js|jsx)$/,
-            exclude: /[\\/](node_modules | test | server)[\\/]/,
+            exclude: /(node_modules | test | server)/,
             loader: 'babel-loader?compact=false'
         },
         {

@@ -34,8 +34,7 @@ function Team(props) {
 
     const serverUrl = "http://localhost:1337";
     useEffect(() => {
-        setTimeout(() => {
-            axios.get(`${serverUrl}/teams`)
+        axios.get(`${serverUrl}/teams`)
             .then((respond) => {
                 let membersDataArr = respond.data;
                 let MembersElement = membersDataArr.map(member => (
@@ -43,7 +42,7 @@ function Team(props) {
                             <Member 
                             key={member.id}     
                             name={member.name} 
-                            role={member.obj} 
+                            role={member.role} 
                             src={member.picture ? serverUrl+member.picture.url : womanImage}/>
                         </Col>
                     )
@@ -52,8 +51,7 @@ function Team(props) {
                 console.log(membersDataArr);
             })
             .catch((err) => console.log(err))
-        }, 3000)
-    })
+    },[])
     return (
         <section id="team" className="page-section bg-light">
             <Container>
