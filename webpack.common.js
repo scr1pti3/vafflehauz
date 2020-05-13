@@ -9,7 +9,8 @@ const entry = {
 
 const output = {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
 }
 
 const optimization = {
@@ -69,7 +70,7 @@ const __module = {
               limit: 10000
             }
         }
-    ] 
+    ]
 }
 
 module.exports = {

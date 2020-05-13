@@ -5,10 +5,11 @@
   "main": "index.js",
   "sideEffects": false,
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "server": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.dev.js",
     "publish": "webpack --config webpack.prod.js",
-    "server": "node --experimental-modules server/server.mjs",
+    "start": "node --experimental-modules server/server.mjs",
+    "develop": "node --experimental-modules server/develop.mjs",
     "watch": "webpack --watch --config webpack.dev.js"
   },
   "repository": {
@@ -49,6 +50,7 @@
     "url-loader": "^4.1.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   }
