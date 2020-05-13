@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './navbar.css'
-import { 
+import {
     Container,
-    Navbar, 
+    Navbar,
     NavbarBrand,
     NavbarToggler,
     Nav,
@@ -24,6 +24,7 @@ function NavBar (props) {
     const [mainNavShrinkClass, setMainNavShrinkClass] = useState("");
     const [brandShrinkClass, setBrandShrinkClass] = useState("");
 
+    //Nav Element array
     const navLinkElementArr = [
         "services",
         "portfolio",
@@ -65,7 +66,7 @@ function NavBar (props) {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav navbar className="ml-auto text-uppercase">
                         {
-                            navLinkElementArr.map(elem => 
+                            navLinkElementArr.map(elem =>
                                 <NavItem key={elem}>
                                     <NavLink href={`#${elem}`} className="nav-link-style text-light" onClick={toggleNavLink}>
                                         {elem}
