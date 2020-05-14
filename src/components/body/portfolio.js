@@ -24,18 +24,18 @@ function PortfolioItem(props) {
     const containerRef = useCallback(node => {
         if(node !== null) {
             containerNode = node;
-            
+
             setIframeWidth(containerNode.clientWidth);
         }
     }, [containerNode]);
 
     const toggle = () => setModal(!modal);
-   
+
     //Re render after all DOM mutation
     useLayoutEffect(() => {
         //Resize iframe width on window resize
         window.addEventListener('resize', () => {
-            if(containerNode) 
+            if(containerNode)
                 setIframeWidth(containerNode.clientWidth);
         });
     });
@@ -54,7 +54,7 @@ function PortfolioItem(props) {
                 <div className="portfolio-caption-heading">{props.heading}</div>
                 <div className="portfolio-caption-subheading text-muted">{props.type}</div>
             </div>
-            <Modal  isOpen={modal} toggle={toggle} className="portfolio-modal">
+            <Modal isOpen={modal} toggle={toggle} className="portfolio-modal">
                 <Container>
                     <FontAwesomeIcon className="fa-lg float-right mt-4 modal-close" onClick={toggle} icon="times"/>
                 </Container>
@@ -68,7 +68,7 @@ function PortfolioItem(props) {
     );
 }
 
-function Portfolio(props) { 
+function Portfolio(props) {
     const portfolioItemArr = [
         {
             name: "Falling Leaf",
@@ -86,10 +86,10 @@ function Portfolio(props) {
                 </div>
                 <Row>
                     {
-                        portfolioItemArr.map(elem => 
+                        portfolioItemArr.map(elem =>
                             <Col key={elem.name} className="mb-4">
-                                <PortfolioItem 
-                                heading={elem.name} 
+                                <PortfolioItem
+                                heading={elem.name}
                                 type={elem.type}
                                 src={elem.image}
                                 intro={elem.intro}/>

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const router = express.Router();
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTg5MjU4NDA3LCJleHAiOjE1OTE4NTA0MDd9.2hQ0TQXI1HT2OktV8zPuBqZ-_VkJAn_IIGFI-XJLVEg";
+let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTg5MjU4NDA3LCJleHAiOjE1OTE4NTA0MDd9.2hQ0TQXI1HT2OktV8zPuBqZ-_VkJAn_IIGFI-XJLVEg";
 
 //Proxy config
 const config = {
@@ -15,12 +15,16 @@ const config = {
 };
 
 router.get('/teams', (request, response) => {
-  axios.get('/teams', config)
+  const url = request.url;
+
+  axios.get(url, config)
     .then(res => response.json(res.data))
-    .catch(err => console.error("/server/routes /teams " + err));
+    .catch(err => response.status(err.response.status).json(err.response.data));
  });
 
 router.post('/email-send', (request, response) => {
+  const url = request.url;
+
   //Accepts multipart/form-data content
   const form = new multiparty.Form();
 
@@ -29,9 +33,9 @@ router.post('/email-send', (request, response) => {
     //Error on callback
     if(err) console.error('/server/routes form.parse(err) ', err);
 
-    axios.post('/email-send', fields, config)
+    axios.post(url, fields, config)
       .then(res => response.json(res.data))
-      .catch(err => console.error('/server/routes email-send ', err));
+      .catch(err => response.status(err.response.status).json(err.response.data));
   });
 
   //Error when parsing

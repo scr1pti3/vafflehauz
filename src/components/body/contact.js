@@ -8,7 +8,9 @@ import {
   Label,
   Input,
   Row,
-  Col
+  Col,
+  Modal,
+  ModalBody
 } from 'reactstrap';
 import axios from 'axios';
 
@@ -39,15 +41,19 @@ function ContactInput(props) {
 function ContactForm(props) {
   //If the form has been submitted, forward the status to the ContactInput childre
   const [isSubmitted, setSubmit] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [serverResponseMessage, setServerResponseMessage] = useState('');
+
+  //Collapse handler for modal response
+  const handleToggle = () => setModal(!modal);
 
   //Form onSubmit handler
   /*
-  * Show a popup
+  * Show a modal
   * Toggle the submit state
   * Send a post request to /api/email-send with contactForm form-data
   */
   const handleSubmit = (event) => {
-    alert('Email Sent');
     setSubmit(!isSubmitted);
 
     //Create an instance FormData of contactForm
@@ -55,7 +61,11 @@ function ContactForm(props) {
 
     //Send formData with content-type header: multipart/form-data
     axios.post('/api/email-send', formData)
-      .then(res => console.log(res));
+      .then(res => {
+          setModal(!modal);
+          setServerResponseMessage(res.data.message);
+          console.log(res.data);
+      });
 
     event.preventDefault();
   };
@@ -75,6 +85,9 @@ function ContactForm(props) {
       <div className="text-center">
         <Button type="submit" size="xl" className="text-uppercase">Send Message</Button>
       </div>
+      <Modal isOpen={modal} toggle={handleToggle}>
+        <ModalBody>{serverResponseMessage}</ModalBody>
+      </Modal>
     </Form>
   );
 }

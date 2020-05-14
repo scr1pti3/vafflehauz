@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 
-import routes from './routes.mjs';
+import api from './api.mjs';
 
 
 const distPath = path.resolve(process.cwd(),'dist');
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-app.use('/api/', routes);
+app.use('/api/', api);
 
 app.use(express.static(distPath));
 

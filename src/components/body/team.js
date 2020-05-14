@@ -33,7 +33,7 @@ function Team(props) {
             : womanImage}/>
       </Col>));
       setMembers(MembersElement);
-    }).catch((err) => console.log(err))
+    }).catch((err) => console.error(err))
   }, []);
 
   return (<section id="team" className="page-section bg-light">

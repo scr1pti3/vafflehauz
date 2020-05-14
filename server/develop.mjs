@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 
 import config from '../webpack.dev.js';
-import routes from './routes.mjs';
+import api from './api.mjs';
 
 
 const distPath = path.resolve(process.cwd(),'dist');
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-app.use('/api/', routes);
+app.use('/api/', api);
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
