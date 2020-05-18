@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-app.use('/api/', api);
+app.use('/', api);
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,

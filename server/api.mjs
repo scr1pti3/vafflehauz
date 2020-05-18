@@ -9,22 +9,31 @@ let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTg5MjU4ND
 //Proxy config
 const config = {
   baseURL: process.env.DATABASE_URL || 'http://localhost:1337',
-  headers: {
-    Authorization: `Bearer ${process.env.TOKEN || token}`
-  },
 };
 
 router.get('/teams', (request, response) => {
-  const url = request.url;
-
-  axios.get(url, config)
+  axios.get(request.url, config)
     .then(res => response.json(res.data))
     .catch(err => response.status(err.response.status).json(err.response.data));
  });
 
-router.post('/email-send', (request, response) => {
-  const url = request.url;
+router.get('/uploads/:file', (request, response) => {
+  axios.get(request.url, {
+    ...config,
+    responseType: 'stream'
+  })
+    .then(res => {
+      //Use the backend response header for our proxy response header
+      response.set(res.headers);
+      response.set('x-powered-by', 'Express');
 
+      //Send the file as a stream
+      res.data.pipe(response);
+    })
+    .catch(err => console.log('error'));
+ });
+
+router.post('/email-send', (request, response) => {
   //Accepts multipart/form-data content
   const form = new multiparty.Form();
 
@@ -33,7 +42,7 @@ router.post('/email-send', (request, response) => {
     //Error on callback
     if(err) console.error('/server/routes form.parse(err) ', err);
 
-    axios.post(url, fields, config)
+    axios.post(request.url, fields, config)
       .then(res => response.json(res.data))
       .catch(err => response.status(err.response.status).json(err.response.data));
   });

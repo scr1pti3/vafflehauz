@@ -32,6 +32,10 @@
     letter-spacing: 0.0625em;
 }
 
+.is-current {
+  color: #FFDF00;
+}
+
 @media (min-width: 992px) {
     #mainNav{
         padding-top: 1.5rem;
@@ -43,4 +47,3 @@
         font-size: 40px;
     }
 }
-

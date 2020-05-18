@@ -12,6 +12,7 @@ import {
   Modal,
   ModalBody
 } from 'reactstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 
 import './contact.css';
@@ -51,7 +52,7 @@ function ContactForm(props) {
   /*
   * Show a modal
   * Toggle the submit state
-  * Send a post request to /api/email-send with contactForm form-data
+  * Send a post request to /email-send with contactForm form-data
   */
   const handleSubmit = (event) => {
     setSubmit(!isSubmitted);
@@ -60,11 +61,10 @@ function ContactForm(props) {
     const formData = new FormData(event.target);
 
     //Send formData with content-type header: multipart/form-data
-    axios.post('/api/email-send', formData)
+    axios.post('/email-send', formData)
       .then(res => {
           setModal(!modal);
           setServerResponseMessage(res.data.message);
-          console.log(res.data);
       });
 
     event.preventDefault();
@@ -86,7 +86,10 @@ function ContactForm(props) {
         <Button type="submit" size="xl" className="text-uppercase">Send Message</Button>
       </div>
       <Modal isOpen={modal} toggle={handleToggle}>
-        <ModalBody>{serverResponseMessage}</ModalBody>
+          <ModalBody>
+            <FontAwesomeIcon className="fa-lg float-right modal-close" onClick={handleToggle} icon="times"/>
+            {serverResponseMessage}
+          </ModalBody>
       </Modal>
     </Form>
   );

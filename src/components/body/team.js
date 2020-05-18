@@ -25,8 +25,8 @@ function Team(props) {
   const [Members, setMembers] = useState("");
 
   useEffect(() => {
-    axios.get('/api/teams').then((respond) => {
-      let membersDataArr = respond.data;
+    axios.get('/teams').then((response) => {
+      let membersDataArr = response.data;
       let MembersElement = membersDataArr.map(member => (<Col key={member.id}>
         <Member key={member.id} name={member.name} role={member.role} src={member.picture
             ? member.picture.url
