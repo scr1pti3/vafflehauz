@@ -100,8 +100,8 @@ function Contact(props) {
     <section id="contact" className="page-section">
       <Container>
         <div className="text-center">
-          <h2 className="section-heading text-uppercase">Contact Us</h2>
-          <h3 className="section-subheading text-muted">Something something</h3>
+          <h2 className="section-heading text-uppercase">{props.heading}</h2>
+          <h3 className="section-subheading text-muted">{props.subheading}</h3>
         </div>
         <ContactForm/>
       </Container>

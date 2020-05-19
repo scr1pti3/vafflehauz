@@ -57,7 +57,7 @@ function PortfolioItem(props) {
       </Container>
       <div className="container clearfix" ref={containerRef}>
         <ModalHeader className="text-uppercase mb-4" tag="h2">{props.heading}</ModalHeader>
-        <iframe className="modal-iframe mb-4" src="/" width={"" + (
+        <iframe className="modal-iframe mb-4" src={props.website} width={"" + (
           iframeWidth - 30)}/>
       </div>
     </Modal>
@@ -70,7 +70,7 @@ function Portfolio(props) {
   useEffect(() => {
     axios.get('/portfolios')
       .then(res => setPortfolioItems(res.data))
-      .catch(err => console.error(err));
+      .catch(err => console.error('GET /portfolios',err));
   }, [])
 
   return (<section id="portfolio" className="page-section bg-light">
@@ -82,7 +82,7 @@ function Portfolio(props) {
       <Row>
         {
           portfolioItems.map(elem => <Col key={elem.id} className="mb-4">
-            <PortfolioItem heading={elem.name} type={elem.type} src={elem.image.url}/>
+            <PortfolioItem heading={elem.name} type={elem.type} src={elem.image.url} website={elem.webURL}/>
           </Col>)
         }
       </Row>

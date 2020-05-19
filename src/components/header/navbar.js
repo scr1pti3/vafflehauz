@@ -30,6 +30,8 @@ function NavBar(props) {
   //Shrink Navbar on Scroll
   window.onscroll = () => {
     let shrinkMin = 200;
+    
+    //Shrink when document is scrolled passed shrinkMin
     if (document.body.scrollTop > shrinkMin || document.documentElement.scrollTop > shrinkMin) {
       setMainNavShrinkClass("navbar-shrink");
       setBrandShrinkClass("navbar-brand-shrink")
