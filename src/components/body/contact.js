@@ -65,7 +65,8 @@ function ContactForm(props) {
       .then(res => {
           setModal(!modal);
           setServerResponseMessage(res.data.message);
-      });
+      })
+      .catch(err => console.error("POST /email-send", err));
 
     event.preventDefault();
   };

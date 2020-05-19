@@ -32,7 +32,6 @@ function Body(props) {
     .catch(err => console.error('GET /sections-*', err));
   }, []);
 
-  console.log('called', 1+1)
   return (
     <>
       <Services subheading={serviceData.subheading}/>

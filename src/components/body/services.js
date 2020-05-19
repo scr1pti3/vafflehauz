@@ -9,7 +9,7 @@ function Services(props) {
   useEffect(() => {
      axios('/services')
       .then(res => setServicesData(res.data))
-      .catch(err => console.err('GET /services', err));
+      .catch(err => console.error('GET /services', err));
   }, []);
 
   const services = servicesData;
