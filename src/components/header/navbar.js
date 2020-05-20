@@ -30,7 +30,7 @@ function NavBar(props) {
   //Shrink Navbar on Scroll
   window.onscroll = () => {
     let shrinkMin = 200;
-    
+
     //Shrink when document is scrolled passed shrinkMin
     if (document.body.scrollTop > shrinkMin || document.documentElement.scrollTop > shrinkMin) {
       setMainNavShrinkClass("navbar-shrink");
@@ -51,7 +51,7 @@ function NavBar(props) {
         <Scrollspy items={navLinkElementArr} offset={-10} className="ml-auto text-uppercase text-light navbar-nav" currentClassName="is-current">
           {
             navLinkElementArr.map(elem => <NavItem key={elem}>
-                <NavLink href={`#${elem}`} className="nav-link-style" style={{color: 'inherit'}}>
+                <NavLink href={`#${elem}`} className="nav-link-style ml-3" style={{color: 'inherit'}}>
                   {elem}
                 </NavLink>
             </NavItem>)

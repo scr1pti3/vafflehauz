@@ -4,9 +4,9 @@ import './masthead.css'
 
 function Masthead(props) {
     return (
-        <Jumbotron style={{backgroundColor: "transparent"}}>
-            <h1 className="masthead-subheading text-center text-light">{props.subheading}</h1>
-            <p className="masthead-heading text-uppercase text-center text-light">{props.heading}</p>
+        <Jumbotron style={{backgroundColor: "transparent", overflow: "hidden"}}>
+            <div className="masthead-subheading text-center text-light">{props.subheading}</div>
+            <div className="masthead-heading text-uppercase text-center text-light">{props.heading}</div>
 
         </Jumbotron>
     );
