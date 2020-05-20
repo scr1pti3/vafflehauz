@@ -10,4 +10,7 @@ module.exports = merge(common, {
           '/': 'http://localhost:1337'
         }
     },
+    optimization: {
+      usedExports: true, //For tree shaking
+    }
 });

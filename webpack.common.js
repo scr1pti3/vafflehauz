@@ -14,9 +14,8 @@ const output = {
 }
 
 const optimization = {
-    moduleIds: 'hashed',
+    moduleIds: 'hashed', //Prevent from order change on optimization
     runtimeChunk: 'single',
-    usedExports: true,
     splitChunks: {
         chunks: 'all',
         maxInitialRequests: Infinity,
@@ -48,16 +47,17 @@ const plugins = [
 const __module = {
     rules: [
         {
-            test: /.(js|jsx)$/,
+            test: /\.(js|jsx)$/,
             exclude: /(node_modules | test | server)/,
+            include: path.resolve(__dirname, 'src'),
             loader: 'babel-loader?compact=false'
         },
         {
-            test: /.html$/,
+            test: /\.html$/,
             loader: 'html-loader'
         },
         {
-            test: /.css$/,
+            test: /\.css$/,
             use: [
                 {
                     loader: MiniCssExtractPlugin.loader,

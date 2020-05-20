@@ -1,11 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { 
+import {
     faCircle,
-    faLaptop, 
+    faLaptop,
     faLayerGroup,
     faScroll,
     faPlus,
@@ -15,7 +13,7 @@ import {
     faInstagram
 } from '@fortawesome/free-brands-svg-icons'
 
-import Container from './components/container.js' 
+import Container from './components/container.js'
 
 library.add(
     faLaptop,
