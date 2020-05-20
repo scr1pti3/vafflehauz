@@ -77,7 +77,7 @@ function Portfolio(props) {
     <Container>
       <div className="text-center">
         <h2 className="section-heading text-uppercase">Portfolio</h2>
-        <h3 className="section-subheading text-muted">Our past actions</h3>
+        <h3 className="section-subheading text-muted">{props.subheading}</h3>
       </div>
       <Row>
         {
