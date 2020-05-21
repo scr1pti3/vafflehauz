@@ -24,7 +24,7 @@ function Timeline(props) {
               idx % 2)
               ? "timeline-inverted"
               : ""}>
-            <img src={node.thumbnail.url} className="rounded-circle timeline-image"/>
+            <img src={node.thumbnail.url} className="rounded-circle timeline-image" alt="Our web development journey"/>
             <div className="timeline-panel">
               <div className="timeline-heading">
                 <h4>{node.month_year}</h4>

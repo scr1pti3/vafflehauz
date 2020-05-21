@@ -10,7 +10,7 @@ function Member(props) {
   const socialMedia = props.socialMedia || [];
 
   return (<div className="team-member">
-    <img className="mx-auto rounded-circle" src={props.src}/>
+    <img className="mx-auto rounded-circle" src={props.src} alt="Our amazing team"/>
     <h4>{props.name}</h4>
     <p className="text-muted">{props.role}</p>
     {
