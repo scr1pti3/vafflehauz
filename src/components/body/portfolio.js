@@ -45,7 +45,7 @@ function PortfolioItem(props) {
           <FontAwesomeIcon className="fa-3x" icon="plus"/>
         </div>
       </div>
-      <img className="img-fluid" src={props.src}/>
+      <img className="img-fluid" src={props.src} alt="Web design portfolio"/>
     </a>
     <div className="portfolio-caption">
       <div className="portfolio-caption-heading">{props.heading}</div>
